@@ -54,8 +54,8 @@ namespace Algorithms.Sorting
         static IEnumerable<T> Merge<T>(this IEnumerable<T> resource, int l, int mid, int r)
         where T : struct, IComparable
         {
-            var left = resource.ToArray() [l..mid];
-            var right = resource.ToArray() [mid..r];
+            var left = resource.Skip(l).Take(mid - l);
+            var right = resource.Skip(mid).Take(r - mid);
             var i = 0;
             var j = 0;
             var result = new List<T>();
